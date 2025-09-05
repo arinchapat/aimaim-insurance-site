@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ครูพี่อิม ปรึกษาปัญหาประกันภัย | นายหน้าวินาศภัยมืออาชีพ</title>
+  <meta name="description" content="ครูพี่อิม ปรึกษาปัญหาประกันภัย – นายหน้าวินาศภัยมืออาชีพ ดูแลด้วยใจ ความคุ้มครองคุ้มค่า พร้อมดูแลตลอดสัญญา">
+  <link rel="canonical" href="https://yourdomain.com/">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="ครูพี่อิม ปรึกษาปัญหาประกันภัย">
+  <meta property="og:description" content="นายหน้าวินาศภัยมืออาชีพ — มากกว่าการขาย เราคือที่ปรึกษาของคุณ">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourdomain.com/">
+  <meta property="og:image" content="./assets/cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ครูพี่อิม ปรึกษาปัญหาประกันภัย">
+  <meta name="twitter:description" content="ความคุ้มครองคุ้มค่า พร้อมดูแลตลอดสัญญา">
+  <meta name="twitter:image" content="./assets/cover.jpg">
+  <link rel="icon" href="/favicon.ico">
+
+  <!-- ฟอนต์ภาษาไทย -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Noto Sans Thai','ui-sans-serif','system-ui'] },
+          colors: {
+            brand:{50:'#ecf5ff',100:'#d7eaff',200:'#aed4ff',300:'#85beff',400:'#5ca8ff',500:'#3392ff',600:'#1a7ae6',700:'#145db4',800:'#0e4082',900:'#082351'}
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html{scroll-behavior:smooth}
+    section{scroll-margin-top:96px}
+    .no-scrollbar::-webkit-scrollbar{ display:none; }
+    .no-scrollbar{ -ms-overflow-style:none; scrollbar-width:none; }
+    .nowrap{ white-space:nowrap; }
+  </style>
+
+  <!-- Structured Data (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"InsuranceAgency",
+    "name":"ครูพี่อิม ปรึกษาปัญหาประกันภัย",
+    "url":"https://yourdomain.com/",
+    "image":"assets/MOM_IMG.jpg",
+    "telephone":"+66874262649",
+    "priceRange":"฿฿",
+    "areaServed":"Bangkok, Thailand",
+    "address":{
+      "@type":"PostalAddress",
+      "addressLocality":"กรุงเทพมหานคร",
+      "addressCountry":"TH"
+    },
+    "openingHours":"Mo-Sa 09:00-18:00",
+    "sameAs":[
+      "https://m.facebook.com/profile.php?id=100085180820460",
+      "https://lin.ee/4n78Zy0"
+    ]
+  }
+  </script>
+</head>
+<body class="font-sans text-slate-800 antialiased">
+
+  <!-- ปุ่มลอยด้านขวาล่าง -->
+  <div class="fixed z-40 right-4 bottom-4 flex flex-col gap-3">
+    <a href="tel:+66874262649" class="rounded-full shadow-lg px-5 py-3 bg-brand-600 text-white font-semibold hover:bg-brand-700 transition">โทรเลย</a>
+    <a href="https://lin.ee/4n78Zy0" class="rounded-full shadow-lg px-5 py-3 bg-green-600 text-white font-semibold hover:bg-green-700 transition">เพิ่มเพื่อน LINE</a>
+    <a href="https://m.facebook.com/profile.php?id=100085180820460" target="_blank" rel="noopener" class="rounded-full shadow-lg px-5 py-3 bg-slate-900 text-white font-semibold hover:bg-slate-700 transition">Page Facebook</a>
+  </div>
+
+  <!-- Navbar -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur border-b">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="flex items-center justify-between h-16">
+        <a href="#home" class="flex items-center gap-2">
+          <span class="relative inline-block w-8 h-8 rounded-full overflow-hidden bg-brand-100 ring-2 ring-brand-300">
+            <img src="assets/MOM_IMG.jpg" alt="โปรไฟล์ ครูพี่อิม" class="w-full h-full object-cover">
+          </span>
+          <span class="text-base md:text-lg font-bold">ครูพี่อิม ปรึกษาปัญหาประกันภัย</span>
+        </a>
+        <nav class="hidden md:flex gap-6 text-sm font-medium">
+          <a href="#about" class="hover:text-brand-700">เกี่ยวกับเรา</a>
+          <a href="#services" class="hover:text-brand-700">บริการ</a>
+          <a href="#why" class="hover:text-brand-700">ทำไมต้องเรา</a>
+          <a href="#reviews" class="hover:text-brand-700">รีวิว</a>
+          <a href="#videos" class="hover:text-brand-700">คลิป</a>
+          <a href="#contact" class="hover:text-brand-700">ติดต่อ</a>
+        </nav>
+        <div class="md:hidden">
+          <button id="menuBtn" aria-label="เมนู" class="p-2 rounded-md border text-slate-700">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden border-t bg-white">
+      <nav class="mx-auto max-w-6xl px-4 py-3 grid gap-3 text-sm">
+        <a href="#about" class="py-2">เกี่ยวกับเรา</a>
+        <a href="#services" class="py-2">บริการ</a>
+        <a href="#why" class="py-2">ทำไมต้องเรา</a>
+        <a href="#reviews" class="py-2">รีวิว</a>
+        <a href="#videos" class="py-2">คลิป</a>
+        <a href="#contact" class="py-2">ติดต่อ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <!-- Hero -->
+    <section class="pt-28 md:pt-32">
+      <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
+            ดร.กุลญาณัช สุขมี (อิม)
+          </h1>
+          <p class="mt-2 text-base md:text-lg text-slate-700">ทีมอาจารย์แดง</p>
+          <p class="mt-1 text-xl md:text-2xl font-semibold text-slate-900">
+            นายหน้าวินาศภัยมืออาชีพ — มากกว่าการขาย เราคือที่ปรึกษาของคุณ
+          </p>
+          <p class="mt-4 text-lg text-slate-600">
+            ใบอนุญาต คปภ. เลขที่ <span class="font-semibold">6104039111</span> – ได้ความคุ้มครองคุ้มค่า พร้อมดูแลตลอดสัญญา
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="https://m.me/107855268730758" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-brand-600 text-white font-semibold hover:bg-brand-700 transition">ปรึกษาฟรี</a>
+            <a href="https://lin.ee/4n78Zy0" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl border font-semibold hover:bg-slate-50 transition">เพิ่มเพื่อน LINE</a>
+          </div>
+        </div>
+
+        <!-- Hero: รูปคุณแม่ -->
+        <div class="relative">
+          <div class="rounded-2xl shadow-lg w-full h-[360px] md:h-[420px] lg:h-[480px] bg-slate-100 overflow-hidden">
+            <img
+              src="assets/MOM_IMG.jpg"
+              alt="โปรไฟล์ ดร.กุลญาณัช สุขมี (อิม)"
+              class="w-full h-full object-cover object-[50%_30%] sm:object-[50%_38%] lg:object-[52%_45%]"
+              loading="lazy">
+          </div>
+
+          <!-- การ์ดคำอธิบาย: พอดีคำ -->
+          <div class="absolute bottom-3 left-3 md:bottom-6 md:left-6">
+            <div class="w-fit max-w-[92%] md:max-w-[460px] bg-white rounded-2xl shadow p-4">
+              <p class="text-sm font-semibold leading-snug">
+                ผู้จัดการภาคอาวุโส บริษัท ชับบ์สามัคคี&nbsp;ประกันภัย
+              </p>
+              <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                ปริญญาตรี นิติศาสตร์ มหาวิทยาลัยรามคำแหง
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- เกี่ยวกับเรา -->
+    <section id="about" class="py-16 md:py-24">
+      <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-10 items-center">
+        <div class="prose max-w-none">
+          <h2 class="text-2xl md:text-3xl font-bold">เกี่ยวกับเรา</h2>
+
+          <p class="mt-4 text-slate-600">
+            <strong>ครูพี่อิม — ดร.กุลญาณัช สุขมี</strong> นายหน้าวินาศภัยมืออาชีพ
+            ที่มุ่งเน้นการให้คำปรึกษาแบบตรงไปตรงมา เข้าใจง่าย และคำนึงถึงประโยชน์ของลูกค้าเป็นหลัก
+            ด้วยประสบการณ์ทำงานในสายประกันวินาศภัยมากกว่า <strong>10 ปี</strong> ทั้งงานก่อนทำกรมธรรม์
+            ระหว่างคุ้มครอง ไปจนถึงขั้นตอนการเคลม จึงพร้อมเป็นที่พึ่งให้คุณได้ตั้งแต่วันแรกที่คุยกันจนเรื่องจบ
+          </p>
+
+          <p class="mt-3 text-slate-600">
+            แนวทางของเราเริ่มจากการ<strong>รับฟัง</strong>บริบทและงบประมาณของคุณ
+            <strong>วิเคราะห์ความเสี่ยง</strong>ให้ชัดเจน แล้ว<strong>ออกแบบความคุ้มครอง</strong>ที่เหมาะสม
+            พร้อม<strong>อธิบายเงื่อนไขเป็นภาษาง่าย</strong> เพื่อให้คุณตัดสินใจได้ด้วยข้อมูลครบถ้วน
+            ไม่มีการบังคับซื้อ และให้เกียรติทุกคำถามเสมอ
+          </p>
+
+          <ul class="mt-4 list-disc pl-6 text-slate-600">
+            <li>ใบอนุญาต คปภ. เลขที่ <strong>6104039111</strong></li>
+            <li>กระบวนการดูแลครบวงจร: รับฟัง → วิเคราะห์ → ออกแบบความคุ้มครอง → อธิบายเงื่อนไข</li>
+            <li>ช่วยจัดเตรียมเอกสารและประสานงาน<strong>เคลม</strong> ติดตามผลจนเสร็จสิ้น</li>
+            <li>แจ้งเตือน<strong>ต่ออายุ</strong>และทบทวนความคุ้มครองให้สอดคล้องกับชีวิตและงบประมาณทุกปี</li>
+          </ul>
+
+          <div class="mt-5 p-4 rounded-xl bg-slate-50 border text-sm text-slate-600">
+            <p class="font-semibold text-slate-700">จุดยืนของเรา</p>
+            <p class="mt-1">
+              ซื่อสัตย์ โปร่งใส อธิบายข้อยกเว้นและรายละเอียดอย่างตรงไปตรงมา
+              แนะนำเฉพาะสิ่งที่จำเป็นต่อความเสี่ยงของคุณจริง ๆ และอยู่เคียงข้างคุณในวันที่ต้องใช้สิทธิ์คุ้มครอง
+            </p>
+          </div>
+        </div>
+
+        <!-- คอลัมน์ภาพ/เว้นพื้นที่บาลานซ์ตามดีไซน์เดิม -->
+        <div class="hidden md:block"></div>
+      </div>
+    </section>
+
+    <!-- บริการ -->
+    <section id="services" class="py-16 md:py-24 bg-slate-50">
+      <div class="mx-auto max-w-6xl px-4">
+        <h2 class="text-2xl md:text-3xl font-bold">บริการของเรา</h2>
+        <p class="mt-2 text-slate-600">
+          เลือกความคุ้มครองที่เหมาะกับ<strong>งบประมาณ</strong> และได้รับ<strong>คำแนะนำการเรียกสินไหมที่เป็นธรรม</strong>
+        </p>
+
+        <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <article class="rounded-2xl bg-white border shadow-sm p-6">
+            <div class="flex items-center gap-3">
+              <div class="p-3 rounded-xl bg-brand-50 text-brand-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3 12l2-2 4 4L21 4l2 2-14 14L3 12z"/></svg>
+              </div>
+              <h3 class="font-semibold">ประกันรถยนต์ (ชั้น 1, 2+, 3+)</h3>
+            </div>
+            <p class="mt-3 text-sm text-slate-600">คุ้มครองครบครัน เคลมง่าย <strong>มีรถสไลด์</strong> และ<strong>ช่วยเหลือฉุกเฉิน 24 ชม.</strong>*</p>
+            <a href="https://lin.ee/4n78Zy0" target="_blank" class="mt-4 inline-block text-brand-700 font-medium">ขอใบเสนอราคา →</a>
+          </article>
+
+          <article class="rounded-2xl bg-white border shadow-sm p-6">
+            <div class="flex items-center gap-3">
+              <div class="p-3 rounded-xl bg-brand-50 text-brand-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3 12l2-2 4 4L21 4l2 2-14 14L3 12z"/></svg>
+              </div>
+              <h3 class="font-semibold">ประกันอัคคีภัย/ที่อยู่อาศัย</h3>
+            </div>
+            <p class="mt-3 text-sm text-slate-600">คุ้มครองบ้าน/คอนโด จากไฟไหม้ น้ำท่วม ลมพายุ ตามความเสี่ยงของคุณ</p>
+            <a href="https://lin.ee/4n78Zy0" target="_blank" class="mt-4 inline-block text-brand-700 font-medium">สอบถามเพิ่มเติม →</a>
+          </article>
+
+          <article class="rounded-2xl bg-white border shadow-sm p-6">
+            <div class="flex items-center gap-3">
+              <div class="p-3 rounded-xl bg-brand-50 text-brand-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3 12l2-2 4 4L21 4l2 2-14 14L3 12z"/></svg>
+              </div>
+              <h3 class="font-semibold">ประกันอุบัติเหตุ/สุขภาพ</h3>
+            </div>
+            <p class="mt-3 text-sm text-slate-600">ดูแผนคุ้มครองที่คุ้มค่า เบี้ยสบาย และครอบคลุมความเสี่ยงที่เจอบ่อย</p>
+            <a href="https://lin.ee/4n78Zy0" target="_blank" class="mt-4 inline-block text-brand-700 font-medium">พูดคุยผู้เชี่ยวชาญ →</a>
+          </article>
+
+          <article class="rounded-2xl bg-white border shadow-sm p-6">
+            <div class="flex items-center gap-3">
+              <div class="p-3 rounded-xl bg-brand-50 text-brand-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3 12l2-2 4 4L21 4l2 2-14 14L3 12z"/></svg>
+              </div>
+              <h3 class="font-semibold">ประกันธุรกิจ/ทรัพย์สิน</h3>
+            </div>
+            <p class="mt-3 text-sm text-slate-600">ร้านค้า/คลังสินค้า/ความรับผิดต่อบุคคลภายนอก (PL) และทรัพย์สิน</p>
+            <a href="https://lin.ee/4n78Zy0" target="_blank" class="mt-4 inline-block text-brand-700 font-medium">รับคำปรึกษา →</a>
+          </article>
+
+          <article class="rounded-2xl bg-white border shadow-sm p-6">
+            <div class="flex items-center gap-3">
+              <div class="p-3 rounded-xl bg-brand-50 text-brand-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3 12l2-2 4 4L21 4l2 2-14 14L3 12z"/></svg>
+              </div>
+              <h3 class="font-semibold">ประกันการเดินทาง (ใน/ต่างประเทศ)</h3>
+            </div>
+            <p class="mt-3 text-sm text-slate-600">เดินทางอุ่นใจทุกเส้นทาง <strong>เครื่องบินหรือกระเป๋าดีเลย์</strong> มีเงินชดเชยตามเงื่อนไข</p>
+            <a href="https://lin.ee/4n78Zy0" target="_blank" class="mt-4 inline-block text-brand-700 font-medium">สอบถามแผนเดินทาง →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ทำไมต้องเลือกเรา -->
+    <section id="why" class="py-16 md:py-24">
+      <div class="mx-auto max-w-6xl px-4">
+        <h2 class="text-2xl md:text-3xl font-bold">ทำไมต้องเลือกเรา</h2>
+        <div class="mt-8 grid md:grid-cols-3 gap-6">
+          <div class="rounded-2xl border p-6"><p class="font-semibold">เชี่ยวชาญด้านวินาศภัย</p><p class="mt-2 text-sm text-slate-600">เข้าใจผลิตภัณฑ์และกระบวนการสินไหมเชิงลึก</p></div>
+          <div class="rounded-2xl border p-6"><p class="font-semibold">นายหน้ามืออาชีพ</p><p class="mt-2 text-sm text-slate-600">แนะนำอย่างเป็นกลาง ยืนข้างประโยชน์ของลูกค้า</p></div>
+          <div class="rounded-2xl border p-6"><p class="font-semibold">อัปเดตความรู้เสมอ</p><p class="mt-2 text-sm text-slate-600">ข้อมูลและแนวปฏิบัติล่าสุด เพื่อคำแนะนำที่แม่นยำ</p></div>
+          <div class="rounded-2xl border p-6"><p class="font-semibold">ทีมอาจารย์แดง</p><p class="mt-2 text-sm text-slate-600">ที่ปรึกษามืออาชีพ ยกระดับมาตรฐานงานบริการ</p></div>
+          <div class="rounded-2xl border p-6"><p class="font-semibold">ดูแลตลอดสัญญา</p><p class="mt-2 text-sm text-slate-600">ต่ออายุ แจ้งเตือน ประสานสินไหมอย่างใกล้ชิด</p></div>
+          <div class="rounded-2xl border p-6"><p class="font-semibold">โปร่งใส ตรวจสอบได้</p><p class="mt-2 text-sm text-slate-600">อธิบายเงื่อนไขตรงไปตรงมา ไม่มีบังคับขาย</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- รีวิว: ฝังโพสต์ Facebook (responsive iframe, ขนาดเล็กลง) -->
+    <section id="reviews" class="py-16 md:py-24 bg-slate-50">
+      <div class="mx-auto max-w-6xl px-4">
+        <h2 class="text-2xl md:text-3xl font-bold">รีวิวจากลูกค้า</h2>
+
+        <div class="relative mt-6">
+          <button id="rvPrev" aria-label="ก่อนหน้า"
+            class="hidden md:inline-flex absolute -left-3 top-1/2 -translate-y-1/2 z-10 rounded-full border bg-white/90 px-3 py-2 shadow hover:bg-white">←</button>
+          <button id="rvNext" aria-label="ถัดไป"
+            class="hidden md:inline-flex absolute -right-3 top-1/2 -translate-y-1/2 z-10 rounded-full border bg-white/90 px-3 py-2 shadow hover:bg-white">→</button>
+
+          <div id="reviewsStrip"
+               class="no-scrollbar overflow-x-auto snap-x snap-mandatory flex gap-4 pb-2 scroll-smooth"></div>
+        </div>
+
+        <script>
+          // ====== ตั้งค่า "ความกว้าง" การ์ดรีวิว ======
+          const EMBED = {
+            BASE_WIDTH: 500,
+            VW_FACTOR: 0.70,
+            MIN: 260,
+            MAX: 420
+          };
+
+          // ลิสต์โพสต์ (permalink) + ความสูงตอนกว้าง 500px
+          const REVIEWS = [
+            { href: "https://www.facebook.com/permalink.php?story_fbid=pfbid027K9kCgFfeANk9SsM8bKKjYWLEABPxLiGnaRKaKS6M1i4wL4BhrkhXVjsA271kKpBl&id=100085180820460", baseH: 692 },
+            { href: "https://www.facebook.com/permalink.php?story_fbid=pfbid02r9npPaECygEwhcxg1NJ7dNsmkHjd1KGPBq3PcTHLMciXZXzFEbxWT6hwuv7BYLqUl&id=100085180820460", baseH: 686 },
+            { href: "https://www.facebook.com/permalink.php?story_fbid=pfbid03C6FH2Q52vyQxRAEaAnfcY5746BBSbBRK52GN9Luxw5kzvBWNY1ArtCe9E6Ni9Lql&id=100085180820460", baseH: 592 },
+            { href: "https://www.facebook.com/permalink.php?story_fbid=pfbid0rhgTdyWZVePW4gEPUS5jcjpkDS6VbzUMAQqUvUQQu1cHyc5phUyE3BsyDu9eoYjPl&id=100085180820460", baseH: 659 },
+            { href: "https://www.facebook.com/permalink.php?story_fbid=pfbid02kGBUydRB3B3Wp2jo7kbsMmaSRfFAXaouCxEZ3YmRfRUnVix8MPZxcM4MibLegvaVl&id=100085180820460", baseH: 658 },
+            { href: "https://www.facebook.com/permalink.php?story_fbid=pfbid02LoRXEPRKZ3ZCLMfBqginE5mY9pe8isbhfDkcfbqvyy159Papg9NkY4M7MstWxeoXl&id=100085180820460", baseH: 657 },
+            { href: "https://www.facebook.com/permalink.php?story_fbid=pfbid0MNQWJpFRMUL1bvvyRWyQuW8XLnVVtz2JcwMdL6ykKyzNGNz2jZiQ48o8MxU6iuWRl&id=100085180820460", baseH: 746 }
+          ];
+
+          const strip = document.getElementById('reviewsStrip');
+
+          function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+          function buildEmbedSrc(href, width){
+            const base = "https://www.facebook.com/plugins/post.php";
+            const u = new URL(base);
+            u.searchParams.set("href", href);
+            u.searchParams.set("show_text", "true");
+            u.searchParams.set("width", String(width));
+            return u.toString();
+          }
+
+          function renderReviews(){
+            strip.innerHTML = "";
+
+            const vw = Math.min(window.innerWidth || 500, document.documentElement.clientWidth || 500);
+            const target = Math.round(vw * EMBED.VW_FACTOR);
+            const cardW  = clamp(target, EMBED.MIN, EMBED.MAX);
+            const ratio  = cardW / EMBED.BASE_WIDTH;
+
+            REVIEWS.forEach(({href, baseH}) => {
+              const iframeH = Math.round(baseH * ratio);
+              const card = document.createElement('div');
+              card.className = "snap-start rounded-2xl bg-white border shadow-sm overflow-hidden p-3";
+              card.style.minWidth = card.style.width = cardW + "px";
+
+              const src = buildEmbedSrc(href, cardW);
+
+              card.innerHTML = `
+                <iframe src="${src}"
+                        width="${cardW}" height="${iframeH}"
+                        style="border:none;overflow:hidden;width:100%"
+                        scrolling="no" frameborder="0" allowfullscreen="true"
+                        loading="lazy"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <div class="px-1 pt-2 pb-1 text-xs text-slate-500">
+                  ถ้าโพสต์ไม่โหลด <a class="text-brand-700 font-medium" href="${href}" target="_blank" rel="noopener">เปิดดูบน Facebook</a>
+                </div>`;
+              strip.appendChild(card);
+            });
+
+            window.__rvScrollBy = cardW + 24; // ระยะเลื่อนต่อครั้ง
+          }
+
+          let _t;
+          window.addEventListener('resize', () => { clearTimeout(_t); _t = setTimeout(renderReviews, 120); });
+          window.addEventListener('orientationchange', () => { clearTimeout(_t); _t = setTimeout(renderReviews, 120); });
+          renderReviews();
+
+          // ปุ่มเลื่อนซ้าย/ขวา
+          const btnPrev = document.getElementById('rvPrev');
+          const btnNext = document.getElementById('rvNext');
+          const getStep = () => window.__rvScrollBy || 360;
+          btnPrev?.addEventListener('click', () => strip.scrollBy({ left: -getStep(), behavior: 'smooth' }));
+          btnNext?.addEventListener('click', () => strip.scrollBy({ left:  getStep(), behavior: 'smooth' }));
+        </script>
+      </div>
+    </section>
+
+    <!-- คลิปความรู้จากครูพี่อิม (แนวนอนเลื่อนซ้าย-ขวา) -->
+    <section id="videos" class="py-16 md:py-24">
+      <div class="mx-auto max-w-6xl px-4">
+        <h2 class="text-2xl md:text-3xl font-bold">คลิปความรู้ประกันภัยจากครูพี่อิม</h2>
+
+        <!-- ข้อความเชิญชวน: กดแล้วไปหน้าเพจ -->
+        <p class="mt-2 text-slate-600">
+          ติดตามเพจ
+          <a href="https://www.facebook.com/profile.php?id=100085180820460" target="_blank" rel="noopener"
+            class="text-brand-700 font-semibold underline underline-offset-2">
+            ครูพี่อิม ให้คำปรึกษา ปัญหาประกันภัย
+          </a>
+          เพื่อรับความรู้เพิ่มเติมและไม่พลาดข่าวสาร
+        </p>
+
+        <div class="relative mt-6">
+          <button id="vdPrev" aria-label="ก่อนหน้า"
+            class="hidden md:inline-flex absolute -left-3 top-1/2 -translate-y-1/2 z-10 rounded-full border bg-white/90 px-3 py-2 shadow hover:bg-white">←</button>
+          <button id="vdNext" aria-label="ถัดไป"
+            class="hidden md:inline-flex absolute -right-3 top-1/2 -translate-y-1/2 z-10 rounded-full border bg-white/90 px-3 py-2 shadow hover:bg-white">→</button>
+
+          <div id="videosStrip"
+              class="no-scrollbar overflow-x-auto snap-x snap-mandatory flex gap-4 pb-2 scroll-smooth"></div>
+        </div>
+      </div>
+
+      <script>
+        // ===== ใส่ลิงก์โพสต์วิดีโอ/รีลของ Facebook (ต้องเป็นสาธารณะ) =====
+        const FB_VIDEOS = [
+          "https://www.facebook.com/100085180820460/videos/1570496973630958/",
+          "https://www.facebook.com/reel/607662211611636/",
+          "https://www.facebook.com/reel/404307102648534/",
+          "https://www.facebook.com/reel/1078768187014049/",
+          "https://www.facebook.com/reel/1016616546675557/",
+          "https://www.facebook.com/reel/811906684356395/",
+          "https://www.facebook.com/100085180820460/videos/861436412173323/",
+          "https://www.facebook.com/reel/924055746431730/"
+        ];
+        // ================================================================
+
+        // สัดส่วนวิดีโอแนวตั้ง (อ้างอิง 267x476 ≈ 9:16)
+        const VD = {
+          RATIO: 476/267,
+          VW_FACTOR: 0.70,
+          MIN: 260,
+          MAX: 360
+        };
+
+        function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+        function buildVideoSrc(href, width){
+          const u = new URL("https://www.facebook.com/plugins/video.php");
+          u.searchParams.set("href", href);
+          u.searchParams.set("show_text", "false");
+          u.searchParams.set("width", String(width));
+          u.searchParams.set("height", String(Math.round(width * VD.RATIO)));
+          u.searchParams.set("t", "0");
+          return u.toString();
+        }
+
+        const vStrip = document.getElementById("videosStrip");
+
+        function renderVideos(){
+          vStrip.innerHTML = "";
+
+          const vw = Math.min(window.innerWidth || 360, document.documentElement.clientWidth || 360);
+          const target = Math.round(vw * VD.VW_FACTOR);
+          const cardW  = clamp(target, VD.MIN, VD.MAX);
+          const cardH  = Math.round(cardW * VD.RATIO);
+
+          FB_VIDEOS.forEach(href => {
+            const card = document.createElement("article");
+            card.className = "min-w-[260px] snap-start rounded-2xl bg-white border p-3 shadow-sm hover:shadow transition";
+            card.style.minWidth = card.style.width = cardW + "px";
+
+            const src = buildVideoSrc(href, cardW);
+
+            card.innerHTML = `
+              <iframe
+                src="${src}"
+                width="${cardW}" height="${cardH}"
+                style="border:none;overflow:hidden;width:100%"
+                scrolling="no" frameborder="0" allowfullscreen="true" loading="lazy"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <div class="px-1 pt-2 pb-1 text-xs text-slate-500">
+                ถ้าคลิปไม่โหลด <a class="text-brand-700 font-medium" href="${href}" target="_blank" rel="noopener">เปิดดูบน Facebook</a>
+              </div>
+            `;
+            vStrip.appendChild(card);
+          });
+
+          window.__vdScrollBy = cardW + 24;
+        }
+
+        let _tV;
+        window.addEventListener("resize", () => { clearTimeout(_tV); _tV = setTimeout(renderVideos, 120); });
+        window.addEventListener("orientationchange", () => { clearTimeout(_tV); _tV = setTimeout(renderVideos, 120); });
+        renderVideos();
+
+        const btnVPrev = document.getElementById('vdPrev');
+        const btnVNext = document.getElementById('vdNext');
+        const getVStep = () => window.__vdScrollBy || 360;
+        btnVPrev?.addEventListener('click', () => vStrip.scrollBy({ left: -getVStep(), behavior: 'smooth' }));
+        btnVNext?.addEventListener('click', () => vStrip.scrollBy({ left:  getVStep(), behavior: 'smooth' }));
+      </script>
+    </section>
+
+    <!-- ติดต่อเรา -->
+    <section id="contact" class="py-16 md:py-24 bg-slate-50">
+      <div class="mx-auto max-w-6xl px-4">
+        <h2 class="text-2xl md:text-3xl font-bold">ติดต่อเรา</h2>
+        <p class="mt-2 text-slate-600">
+          โทร <a class="text-brand-700 font-medium" href="tel:+66874262649">087-426-2649</a> •
+          LINE: <a class="text-brand-700 font-medium" href="https://lin.ee/4n78Zy0" target="_blank" rel="noopener">@aimaim.</a> •
+          Facebook Page: <a class="text-brand-700 font-medium" href="https://m.facebook.com/profile.php?id=100085180820460" target="_blank" rel="noopener">คลิกที่นี่</a>
+        </p>
+
+        <!-- ปุ่มคุยด่วน -->
+        <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 md:max-w-xl">
+          <a href="https://m.me/107855268730758" target="_blank" rel="noopener"
+            class="rounded-xl px-4 py-3 border text-center font-medium hover:bg-slate-50">คุยผ่าน Facebook Messenger</a>
+          <a href="https://lin.ee/4n78Zy0" target="_blank" rel="noopener"
+            class="rounded-xl px-4 py-3 border text-center font-medium hover:bg-slate-50">คุยผ่าน LINE OA</a>
+        </div>
+
+        <div class="mt-8 grid md:grid-cols-2 gap-10">
+          <!-- ฟอร์ม -->
+          <div>
+            <div class="rounded-2xl bg-white border shadow-sm p-6">
+              <h3 class="font-semibold">ขอใบเสนอราคา / ปรึกษาฟรี</h3>
+
+              <form id="contactForm" action="https://formspree.io/f/xyzdblaq" method="POST" class="mt-6 grid gap-4">
+                <!-- anti-bot (honeypot) -->
+                <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
+                <!-- subject -->
+                <input type="hidden" name="_subject" value="ข้อความจากเว็บไซต์: ขอใบเสนอราคา/ปรึกษา" />
+
+                <div>
+                  <label class="text-sm" for="name">ชื่อ-นามสกุล</label>
+                  <input id="name" name="name" type="text" required class="mt-1 w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-400" placeholder="เช่น สุพัตรา ใจดี">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="text-sm" for="phone">เบอร์โทร</label>
+                    <input id="phone" name="phone" type="tel" required class="mt-1 w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-400" placeholder="087-426-2649">
+                  </div>
+                  <div>
+                    <label class="text-sm" for="line">LINE ID (ถ้ามี)</label>
+                    <input id="line" name="line" type="text" class="mt-1 w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-400" placeholder="@aimaim.">
+                  </div>
+                </div>
+                <div>
+                  <label class="text-sm" for="service">ต้องการข้อมูลเกี่ยวกับ</label>
+                  <select id="service" name="service" class="mt-1 w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-400">
+                    <option>ประกันรถยนต์ ชั้น 1</option>
+                    <option>ประกันรถยนต์ 2+</option>
+                    <option>ประกันรถยนต์ 3+</option>
+                    <option>ประกันอัคคีภัย/บ้าน</option>
+                    <option>ประกันอุบัติเหตุ/สุขภาพ</option>
+                    <option>ประกันธุรกิจ/ทรัพย์สิน</option>
+                    <option>ประกันการเดินทาง</option>
+                    <option>อื่น ๆ</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="text-sm" for="message">รายละเอียดเพิ่มเติม</label>
+                  <textarea id="message" name="message" rows="4" class="mt-1 w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-400" placeholder="บอกข้อมูลคร่าว ๆ เพื่อประเมินเบี้ย เช่น รุ่นรถ/ทุน/งบประมาณ/ความต้องการ"></textarea>
+                </div>
+                <button type="submit" class="rounded-xl bg-brand-600 text-white font-semibold px-5 py-3 hover:bg-brand-700 transition shadow">ส่งคำขอ</button>
+                <p id="formStatus" class="text-sm mt-2 hidden"></p>
+              </form>
+            </div>
+          </div>
+
+          <!-- คอลัมน์ขวาเว้นไว้เพื่อบาล้านซ์บนจอใหญ่ -->
+          <div class="hidden md:block"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-10 border-t">
+    <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-6 items-center">
+      <div class="text-sm text-slate-600">
+        © <span id="year"></span> ครูพี่อิม ปรึกษาปัญหาประกันภัย • ใบอนุญาต คปภ. เลขที่ 6104039111
+      </div>
+      <div class="flex gap-4 justify-start md:justify-end text-sm">
+        <a href="#about" class="hover:text-brand-700">เกี่ยวกับเรา</a>
+        <a href="#services" class="hover:text-brand-700">บริการ</a>
+        <a href="#reviews" class="hover:text-brand-700">รีวิว</a>
+        <a href="#videos" class="hover:text-brand-700">คลิป</a>
+        <a href="#contact" class="hover:text-brand-700">ติดต่อ</a>
+        <a href="https://lin.ee/4n78Zy0" class="hover:text-brand-700">LINE</a>
+        <a href="https://m.facebook.com/profile.php?id=100085180820460" class="hover:text-brand-700" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // เปิด/ปิดเมนูมือถือ
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn?.addEventListener('click', () => { menu.classList.toggle('hidden'); });
+
+    // ปีปัจจุบันใน footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ส่งฟอร์มด้วย fetch เพื่อ UX ที่ดี (ถ้า JS ปิด จะ fallback เป็นโพสต์ปกติของ Formspree)
+    (function(){
+      const form = document.getElementById('contactForm');
+      const statusEl = document.getElementById('formStatus');
+      if(!form) return;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        statusEl.classList.remove('hidden');
+        statusEl.textContent = 'กำลังส่ง...';
+        statusEl.className = 'text-sm mt-2 text-slate-600';
+
+        try {
+          const resp = await fetch(form.action, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(form)
+          });
+
+          if (resp.ok) {
+            form.reset();
+            statusEl.textContent = 'ส่งคำขอเรียบร้อย ขอบคุณค่ะ เราจะติดต่อกลับโดยเร็วที่สุด';
+            statusEl.className = 'text-sm mt-2 text-emerald-700';
+          } else {
+            statusEl.textContent = 'ส่งไม่สำเร็จ กรุณาลองใหม่ หรือใช้ LINE/โทรศัพท์ด้านบน';
+            statusEl.className = 'text-sm mt-2 text-rose-700';
+          }
+        } catch (err) {
+          statusEl.textContent = 'เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่ภายหลัง';
+          statusEl.className = 'text-sm mt-2 text-rose-700';
+        }
+      });
+    })();
+  </script>
+
+  <!-- ไม่ต้องใช้ Facebook SDK: ใช้ iframe ล้วน -->
+</body>
+</html>
