@@ -31,7 +31,9 @@
         extend: {
           fontFamily: { sans: ['Noto Sans Thai','ui-sans-serif','system-ui'] },
           colors: {
-            brand:{50:'#ecf5ff',100:'#d7eaff',200:'#aed4ff',300:'#85beff',400:'#5ca8ff',500:'#3392ff',600:'#1a7ae6',700:'#145db4',800:'#0e4082',900:'#082351'}
+            brand:{50:'#ecf5ff',100:'#d7eaff',200:'#aed4ff',300:'#85beff',400:'#5ca8ff',500:'#3392ff',600:'#1a7ae6',700:'#145db4',800:'#0e4082',900:'#082351'},
+            trust:{50:'#ecfdf5',100:'#d1fae5',200:'#a7f3d0',300:'#6ee7b7',400:'#34d399',500:'#10b981',600:'#059669',700:'#047857',800:'#065f46',900:'#064e3b'},
+            accent:{50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e'}
           }
         }
       }
@@ -43,6 +45,59 @@
     .no-scrollbar::-webkit-scrollbar{ display:none; }
     .no-scrollbar{ -ms-overflow-style:none; scrollbar-width:none; }
     .nowrap{ white-space:nowrap; }
+    
+    /* Enhanced animations and micro-interactions */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .animate-fade-in-up { animation: fadeInUp 0.6s ease-out; }
+    .animate-fade-in { animation: fadeIn 0.8s ease-out; }
+    .gradient-animate { 
+      background: linear-gradient(-45deg, #0ea5e9, #3392ff, #10b981, #059669);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+    }
+    
+    /* Enhanced shadows and depth */
+    .shadow-soft { box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08); }
+    .shadow-glow { box-shadow: 0 10px 40px -12px rgba(51, 146, 255, 0.4); }
+    .shadow-trust { box-shadow: 0 8px 30px -8px rgba(16, 185, 129, 0.3); }
+    
+    /* Smooth transitions */
+    .transition-all-smooth { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .hover-lift:hover { transform: translateY(-2px); }
+    
+    /* Navigation enhancements */
+    .nav-link {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 50%;
+      background: linear-gradient(90deg, #3392ff, #10b981);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
   </style>
 
   <!-- Structured Data (SEO) -->
@@ -79,77 +134,121 @@
   </div>
 
   <!-- Navbar -->
-  <header class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur border-b">
+  <header class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-lg border-b border-white/20 shadow-soft transition-all-smooth">
     <div class="mx-auto max-w-6xl px-4">
       <div class="flex items-center justify-between h-16">
-        <a href="#home" class="flex items-center gap-2">
-          <span class="relative inline-block w-8 h-8 rounded-full overflow-hidden bg-brand-100 ring-2 ring-brand-300">
-            <img src="assets/MOM_IMG.jpg" alt="โปรไฟล์ ครูพี่อิม" class="w-full h-full object-cover">
+        <a href="#home" class="flex items-center gap-2 group">
+          <span class="relative inline-block w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br from-brand-100 to-trust-100 ring-2 ring-brand-300/50 transition-all-smooth group-hover:ring-brand-400/70 group-hover:shadow-glow">
+            <img src="assets/MOM_IMG.jpg" alt="โปรไฟล์ ครูพี่อิม" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
           </span>
-          <span class="text-base md:text-lg font-bold">ครูพี่อิม ปรึกษาปัญหาประกันภัย</span>
+          <span class="text-base md:text-lg font-bold bg-gradient-to-r from-brand-700 to-trust-600 bg-clip-text text-transparent">ครูพี่อิม ปรึกษาปัญหาประกันภัย</span>
         </a>
         <nav class="hidden md:flex gap-6 text-sm font-medium">
-          <a href="#about" class="hover:text-brand-700">เกี่ยวกับเรา</a>
-          <a href="#services" class="hover:text-brand-700">บริการ</a>
-          <a href="#why" class="hover:text-brand-700">ทำไมต้องเรา</a>
-          <a href="#reviews" class="hover:text-brand-700">รีวิว</a>
-          <a href="#videos" class="hover:text-brand-700">คลิป</a>
-          <a href="#contact" class="hover:text-brand-700">ติดต่อ</a>
+          <a href="#about" class="nav-link hover:text-brand-700 transition-all-smooth">เกี่ยวกับเรา</a>
+          <a href="#services" class="nav-link hover:text-brand-700 transition-all-smooth">บริการ</a>
+          <a href="#why" class="nav-link hover:text-brand-700 transition-all-smooth">ทำไมต้องเรา</a>
+          <a href="#reviews" class="nav-link hover:text-brand-700 transition-all-smooth">รีวิว</a>
+          <a href="#videos" class="nav-link hover:text-brand-700 transition-all-smooth">คลิป</a>
+          <a href="#contact" class="nav-link hover:text-brand-700 transition-all-smooth">ติดต่อ</a>
         </nav>
         <div class="md:hidden">
-          <button id="menuBtn" aria-label="เมนู" class="p-2 rounded-md border text-slate-700">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <button id="menuBtn" aria-label="เมนู" class="p-2 rounded-lg border border-slate-200 text-slate-700 hover:border-brand-300 hover:bg-brand-50 transition-all-smooth">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
           </button>
         </div>
       </div>
     </div>
-    <div id="mobileMenu" class="md:hidden hidden border-t bg-white">
+    <div id="mobileMenu" class="md:hidden hidden border-t bg-white/95 backdrop-blur-lg shadow-soft transition-all duration-300 ease-out">
       <nav class="mx-auto max-w-6xl px-4 py-3 grid gap-3 text-sm">
-        <a href="#about" class="py-2">เกี่ยวกับเรา</a>
-        <a href="#services" class="py-2">บริการ</a>
-        <a href="#why" class="py-2">ทำไมต้องเรา</a>
-        <a href="#reviews" class="py-2">รีวิว</a>
-        <a href="#videos" class="py-2">คลิป</a>
-        <a href="#contact" class="py-2">ติดต่อ</a>
+        <a href="#about" class="py-2 px-3 rounded-lg hover:bg-brand-50 hover:text-brand-700 transition-all-smooth">เกี่ยวกับเรา</a>
+        <a href="#services" class="py-2 px-3 rounded-lg hover:bg-brand-50 hover:text-brand-700 transition-all-smooth">บริการ</a>
+        <a href="#why" class="py-2 px-3 rounded-lg hover:bg-brand-50 hover:text-brand-700 transition-all-smooth">ทำไมต้องเรา</a>
+        <a href="#reviews" class="py-2 px-3 rounded-lg hover:bg-brand-50 hover:text-brand-700 transition-all-smooth">รีวิว</a>
+        <a href="#videos" class="py-2 px-3 rounded-lg hover:bg-brand-50 hover:text-brand-700 transition-all-smooth">คลิป</a>
+        <a href="#contact" class="py-2 px-3 rounded-lg hover:bg-brand-50 hover:text-brand-700 transition-all-smooth">ติดต่อ</a>
       </nav>
     </div>
   </header>
 
   <main id="home">
     <!-- Hero -->
-    <section class="pt-28 md:pt-32">
-      <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-10 items-center">
-        <div>
+    <section class="pt-28 md:pt-32 relative overflow-hidden">
+      <!-- Background gradient -->
+      <div class="absolute inset-0 gradient-animate opacity-5"></div>
+      <div class="absolute inset-0 bg-gradient-to-br from-brand-50/30 via-white/50 to-trust-50/30"></div>
+      
+      <div class="relative mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-10 items-center">
+        <div class="animate-fade-in-up">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-brand-100/80 to-trust-100/80 border border-brand-200/50 mb-6 animate-fade-in">
+            <div class="w-2 h-2 bg-trust-500 rounded-full animate-pulse"></div>
+            <span class="text-sm font-medium text-slate-700">พร้อมให้คำปรึกษา 24/7</span>
+          </div>
+          
           <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
-            ดร.กุลญาณัช สุขมี (อิม)
+            <span class="bg-gradient-to-r from-brand-700 via-brand-600 to-trust-600 bg-clip-text text-transparent">
+              ดร.กุลญาณัช สุขมี (อิม)
+            </span>
           </h1>
-          <p class="mt-2 text-base md:text-lg text-slate-700">ทีมอาจารย์แดง</p>
-          <p class="mt-1 text-xl md:text-2xl font-semibold text-slate-900">
-            นายหน้าวินาศภัยมืออาชีพ — มากกว่าการขาย เราคือที่ปรึกษาของคุณ
+          <p class="mt-2 text-base md:text-lg text-accent-600 font-semibold">ทีมอาจารย์แดง</p>
+          <p class="mt-1 text-xl md:text-2xl font-semibold text-slate-900 leading-relaxed">
+            นายหน้าวินาศภัยมืออาชีพ — <span class="text-trust-600">มากกว่าการขาย เราคือที่ปรึกษาของคุณ</span>
           </p>
-          <p class="mt-4 text-lg text-slate-600">
-            ใบอนุญาต คปภ. เลขที่ <span class="font-semibold">6104039111</span> – ได้ความคุ้มครองคุ้มค่า พร้อมดูแลตลอดสัญญา
+          <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+            ใบอนุญาต คปภ. เลขที่ <span class="font-semibold text-brand-700 bg-brand-50 px-2 py-1 rounded-lg">6104039111</span> – ได้ความคุ้มครองคุ้มค่า พร้อมดูแลตลอดสัญญา
           </p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a href="https://m.me/107855268730758" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-brand-600 text-white font-semibold hover:bg-brand-700 transition">ปรึกษาฟรี</a>
-            <a href="https://lin.ee/4n78Zy0" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl border font-semibold hover:bg-slate-50 transition">เพิ่มเพื่อน LINE</a>
+          
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="https://m.me/107855268730758" target="_blank" rel="noopener" 
+               class="group px-8 py-4 rounded-xl bg-gradient-to-r from-brand-600 to-brand-700 text-white font-semibold shadow-glow hover:shadow-xl hover:from-brand-700 hover:to-brand-800 transition-all-smooth hover-lift transform">
+              <span class="flex items-center gap-2">
+                <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 8.16c-.169 1.858-1.269 6.476-1.757 8.515-.206.865-.613 1.156-1.006 1.186-.853.078-1.501-.563-2.328-1.104-1.295-.848-2.024-1.375-3.28-2.2-1.448-.956-.51-1.483.316-2.342.216-.226 3.988-3.655 4.061-3.968.009-.039.018-.184-.069-.26-.087-.075-.215-.049-.307-.029-.131.029-2.218 1.409-6.26 4.144-.592.408-1.125.606-1.601.595-.527-.012-1.54-.298-2.296-.542-.926-.298-1.662-.456-1.598-.961.033-.263.392-.532 1.077-.808 4.216-1.839 7.027-3.051 8.435-3.635 4.021-1.667 4.856-1.955 5.4-1.955.12 0 .389.028.563.167.147.118.188.277.207.389.016.096.037.314.02.485z"/>
+                </svg>
+                ปรึกษาฟรี
+              </span>
+            </a>
+            <a href="https://lin.ee/4n78Zy0" target="_blank" rel="noopener" 
+               class="group px-8 py-4 rounded-xl border-2 border-trust-500 text-trust-700 font-semibold hover:bg-trust-50 hover:border-trust-600 hover:text-trust-800 transition-all-smooth hover-lift">
+              <span class="flex items-center gap-2">
+                <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771z"/>
+                </svg>
+                เพิ่มเพื่อน LINE
+              </span>
+            </a>
+          </div>
+          
+          <!-- Trust indicators -->
+          <div class="mt-8 flex items-center gap-6 text-sm text-slate-600">
+            <div class="flex items-center gap-2">
+              <div class="w-3 h-3 bg-trust-500 rounded-full"></div>
+              <span>ประสบการณ์ 10+ ปี</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-3 h-3 bg-brand-500 rounded-full"></div>
+              <span>ดูแลตลอดสัญญา</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-3 h-3 bg-accent-500 rounded-full"></div>
+              <span>ปรึกษาฟรี</span>
+            </div>
           </div>
         </div>
 
         <!-- Hero: รูปคุณแม่ -->
-        <div class="relative">
-          <div class="rounded-2xl shadow-lg w-full h-[360px] md:h-[420px] lg:h-[480px] bg-slate-100 overflow-hidden">
+        <div class="relative animate-fade-in">
+          <div class="rounded-3xl shadow-soft hover:shadow-xl transition-all duration-500 w-full h-[360px] md:h-[420px] lg:h-[480px] bg-gradient-to-br from-slate-100 to-slate-50 overflow-hidden group">
             <img
               src="assets/MOM_IMG.jpg"
               alt="โปรไฟล์ ดร.กุลญาณัช สุขมี (อิม)"
-              class="w-full h-full object-cover object-[50%_30%] sm:object-[50%_38%] lg:object-[52%_45%]"
+              class="w-full h-full object-cover object-[50%_30%] sm:object-[50%_38%] lg:object-[52%_45%] group-hover:scale-105 transition-transform duration-700"
               loading="lazy">
           </div>
 
           <!-- การ์ดคำอธิบาย: พอดีคำ -->
-          <div class="absolute bottom-3 left-3 md:bottom-6 md:left-6">
-            <div class="w-fit max-w-[92%] md:max-w-[460px] bg-white rounded-2xl shadow p-4">
-              <p class="text-sm font-semibold leading-snug">
+          <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6 animate-fade-in-up" style="animation-delay: 0.3s;">
+            <div class="w-fit max-w-[92%] md:max-w-[460px] bg-white/95 backdrop-blur-lg rounded-2xl shadow-soft border border-white/50 p-5 hover:shadow-xl transition-all-smooth">
+              <p class="text-sm font-semibold leading-snug text-slate-800">
                 ผู้จัดการภาคอาวุโส บริษัท ชับบ์สามัคคี&nbsp;ประกันภัย
               </p>
               <p class="text-xs text-slate-500 mt-1 leading-relaxed">
@@ -162,43 +261,132 @@
     </section>
 
     <!-- เกี่ยวกับเรา -->
-    <section id="about" class="py-16 md:py-24">
-      <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-10 items-center">
-        <div class="prose max-w-none">
-          <h2 class="text-2xl md:text-3xl font-bold">เกี่ยวกับเรา</h2>
+    <section id="about" class="py-16 md:py-24 bg-gradient-to-br from-white to-slate-50/30">
+      <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-12 items-center">
+        <div class="prose max-w-none animate-fade-in-up">
+          <h2 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-brand-700 to-trust-600 bg-clip-text text-transparent">เกี่ยวกับเรา</h2>
 
-          <p class="mt-4 text-slate-600">
-            <strong>ครูพี่อิม — ดร.กุลญาณัช สุขมี</strong> นายหน้าวินาศภัยมืออาชีพ
-            ที่มุ่งเน้นการให้คำปรึกษาแบบตรงไปตรงมา เข้าใจง่าย และคำนึงถึงประโยชน์ของลูกค้าเป็นหลัก
-            ด้วยประสบการณ์ทำงานในสายประกันวินาศภัยมากกว่า <strong>10 ปี</strong> ทั้งงานก่อนทำกรมธรรม์
-            ระหว่างคุ้มครอง ไปจนถึงขั้นตอนการเคลม จึงพร้อมเป็นที่พึ่งให้คุณได้ตั้งแต่วันแรกที่คุยกันจนเรื่องจบ
-          </p>
+          <div class="mt-6 p-6 rounded-2xl bg-gradient-to-br from-brand-50/50 to-trust-50/50 border border-brand-100/50">
+            <p class="text-slate-700 leading-relaxed">
+              <strong class="text-brand-700">ครูพี่อิม — ดร.กุลญาณัช สุขมี</strong> นายหน้าวินาศภัยมืออาชีพ
+              ที่มุ่งเน้นการให้คำปรึกษาแบบตรงไปตรงมา เข้าใจง่าย และคำนึงถึงประโยชน์ของลูกค้าเป็นหลัก
+              ด้วยประสบการณ์ทำงานในสายประกันวินาศภัยมากกว่า <strong class="text-trust-600">10 ปี</strong> ทั้งงานก่อนทำกรมธรรม์
+              ระหว่างคุ้มครอง ไปจนถึงขั้นตอนการเคลม จึงพร้อมเป็นที่พึ่งให้คุณได้ตั้งแต่วันแรกที่คุยกันจนเรื่องจบ
+            </p>
+          </div>
 
-          <p class="mt-3 text-slate-600">
-            แนวทางของเราเริ่มจากการ<strong>รับฟัง</strong>บริบทและงบประมาณของคุณ
-            <strong>วิเคราะห์ความเสี่ยง</strong>ให้ชัดเจน แล้ว<strong>ออกแบบความคุ้มครอง</strong>ที่เหมาะสม
-            พร้อม<strong>อธิบายเงื่อนไขเป็นภาษาง่าย</strong> เพื่อให้คุณตัดสินใจได้ด้วยข้อมูลครบถ้วน
+          <p class="mt-4 text-slate-600 leading-relaxed">
+            แนวทางของเราเริ่มจากการ<strong class="text-brand-600">รับฟัง</strong>บริบทและงบประมาณของคุณ
+            <strong class="text-trust-600">วิเคราะห์ความเสี่ยง</strong>ให้ชัดเจน แล้ว<strong class="text-accent-600">ออกแบบความคุ้มครอง</strong>ที่เหมาะสม
+            พร้อม<strong class="text-slate-800">อธิบายเงื่อนไขเป็นภาษาง่าย</strong> เพื่อให้คุณตัดสินใจได้ด้วยข้อมูลครบถ้วน
             ไม่มีการบังคับซื้อ และให้เกียรติทุกคำถามเสมอ
           </p>
 
-          <ul class="mt-4 list-disc pl-6 text-slate-600">
-            <li>ใบอนุญาต คปภ. เลขที่ <strong>6104039111</strong></li>
-            <li>กระบวนการดูแลครบวงจร: รับฟัง → วิเคราะห์ → ออกแบบความคุ้มครอง → อธิบายเงื่อนไข</li>
-            <li>ช่วยจัดเตรียมเอกสารและประสานงาน<strong>เคลม</strong> ติดตามผลจนเสร็จสิ้น</li>
-            <li>แจ้งเตือน<strong>ต่ออายุ</strong>และทบทวนความคุ้มครองให้สอดคล้องกับชีวิตและงบประมาณทุกปี</li>
+          <!-- Process Steps -->
+          <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div class="text-center p-3 rounded-lg bg-white shadow-soft hover:shadow-xl transition-all-smooth">
+              <div class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2Z"/>
+                </svg>
+              </div>
+              <span class="text-xs font-medium text-slate-700">รับฟัง</span>
+            </div>
+            <div class="text-center p-3 rounded-lg bg-white shadow-soft hover:shadow-xl transition-all-smooth">
+              <div class="w-8 h-8 bg-trust-100 text-trust-700 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M9,11H7V9H9V11M13,11H11V9H13V11M17,11H15V9H17V11M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z"/>
+                </svg>
+              </div>
+              <span class="text-xs font-medium text-slate-700">วิเคราะห์</span>
+            </div>
+            <div class="text-center p-3 rounded-lg bg-white shadow-soft hover:shadow-xl transition-all-smooth">
+              <div class="w-8 h-8 bg-accent-100 text-accent-700 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M19,19H5V5H19V19Z"/>
+                </svg>
+              </div>
+              <span class="text-xs font-medium text-slate-700">ออกแบบ</span>
+            </div>
+            <div class="text-center p-3 rounded-lg bg-white shadow-soft hover:shadow-xl transition-all-smooth">
+              <div class="w-8 h-8 bg-slate-100 text-slate-700 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14Z"/>
+                </svg>
+              </div>
+              <span class="text-xs font-medium text-slate-700">อธิบาย</span>
+            </div>
+          </div>
+
+          <ul class="mt-6 space-y-3 text-slate-600">
+            <li class="flex items-start gap-3">
+              <div class="flex-shrink-0 w-5 h-5 bg-brand-100 text-brand-700 rounded-full flex items-center justify-center mt-0.5">
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+                </svg>
+              </div>
+              <span>ใบอนุญาต คปภ. เลขที่ <strong class="text-brand-700">6104039111</strong></span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="flex-shrink-0 w-5 h-5 bg-trust-100 text-trust-700 rounded-full flex items-center justify-center mt-0.5">
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+                </svg>
+              </div>
+              <span>ช่วยจัดเตรียมเอกสารและประสานงาน<strong class="text-trust-600">เคลม</strong> ติดตามผลจนเสร็จสิ้น</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="flex-shrink-0 w-5 h-5 bg-accent-100 text-accent-700 rounded-full flex items-center justify-center mt-0.5">
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+                </svg>
+              </div>
+              <span>แจ้งเตือน<strong class="text-accent-600">ต่ออายุ</strong>และทบทวนความคุ้มครองให้สอดคล้องกับชีวิตและงบประมาณทุกปี</span>
+            </li>
           </ul>
 
-          <div class="mt-5 p-4 rounded-xl bg-slate-50 border text-sm text-slate-600">
-            <p class="font-semibold text-slate-700">จุดยืนของเรา</p>
-            <p class="mt-1">
+          <div class="mt-6 p-5 rounded-xl bg-gradient-to-r from-slate-50 to-white border border-slate-200 shadow-soft">
+            <p class="font-semibold text-slate-800 mb-2 flex items-center gap-2">
+              <svg class="w-5 h-5 text-brand-600" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+              </svg>
+              จุดยืนของเรา
+            </p>
+            <p class="text-sm text-slate-600 leading-relaxed">
               ซื่อสัตย์ โปร่งใส อธิบายข้อยกเว้นและรายละเอียดอย่างตรงไปตรงมา
               แนะนำเฉพาะสิ่งที่จำเป็นต่อความเสี่ยงของคุณจริง ๆ และอยู่เคียงข้างคุณในวันที่ต้องใช้สิทธิ์คุ้มครอง
             </p>
           </div>
         </div>
 
-        <!-- คอลัมน์ภาพ/เว้นพื้นที่บาลานซ์ตามดีไซน์เดิม -->
-        <div class="hidden md:block"></div>
+        <!-- คอลัมน์ขวา: ใส่ trust elements -->
+        <div class="space-y-6 animate-fade-in" style="animation-delay: 0.2s;">
+          <div class="bg-white rounded-3xl shadow-soft p-8 hover:shadow-xl transition-all-smooth">
+            <div class="text-center">
+              <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-brand-100 to-brand-200 rounded-2xl mb-4">
+                <svg class="w-8 h-8 text-brand-700" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-slate-800 mb-2">ได้รับความไว้วางใจ</h3>
+              <p class="text-3xl font-bold text-brand-700 mb-1">500+</p>
+              <p class="text-sm text-slate-600">ลูกค้าที่ไว้วางใจ</p>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-3xl shadow-soft p-8 hover:shadow-xl transition-all-smooth">
+            <div class="text-center">
+              <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-trust-100 to-trust-200 rounded-2xl mb-4">
+                <svg class="w-8 h-8 text-trust-700" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-slate-800 mb-2">เวลาตอบสนอง</h3>
+              <p class="text-3xl font-bold text-trust-700 mb-1">< 30</p>
+              <p class="text-sm text-slate-600">นาที เฉลี่ย</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -210,90 +398,210 @@
           เลือกความคุ้มครองที่เหมาะกับ<strong>งบประมาณ</strong> และได้รับ<strong>คำแนะนำการเรียกสินไหมที่เป็นธรรม</strong>
         </p>
 
-        <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-          <article class="rounded-2xl bg-white border shadow-sm p-6">
+        <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <article class="group rounded-2xl bg-white border border-slate-200 shadow-soft p-6 hover:shadow-xl hover:border-brand-200 hover:-translate-y-1 transition-all-smooth">
             <div class="flex items-center gap-3">
-              <div class="p-3 rounded-xl bg-brand-50 text-brand-700">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3 12l2-2 4 4L21 4l2 2-14 14L3 12z"/></svg>
+              <div class="p-3 rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-700 group-hover:from-brand-100 group-hover:to-brand-200 group-hover:shadow-glow transition-all-smooth">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9L15 9.1c-.4-.1-.8-.1-1.2.2l-5.3 3.8-1.9-2.8L14 4c.4-.6.3-1.5-.2-2.1-.6-.4-1.5-.3-2.1.2L5 9 3 13v3c0 .6.4 1 1 1h2c0 1.7 1.3 3 3 3s3-1.3 3-3h6c0 1.7 1.3 3 3 3s3-1.3 3-3zM6 18.5c-.3 0-.5-.2-.5-.5s.2-.5.5-.5.5.2.5.5-.2.5-.5.5zm13 0c-.3 0-.5-.2-.5-.5s.2-.5.5-.5.5.2.5.5-.2.5-.5.5z"/>
+                </svg>
               </div>
-              <h3 class="font-semibold">ประกันรถยนต์ (ชั้น 1, 2+, 3+)</h3>
+              <h3 class="font-semibold text-slate-800 group-hover:text-brand-700 transition-colors">ประกันรถยนต์</h3>
             </div>
-            <p class="mt-3 text-sm text-slate-600">คุ้มครองครบครัน เคลมง่าย <strong>มีรถสไลด์</strong> และ<strong>ช่วยเหลือฉุกเฉิน 24 ชม.</strong>*</p>
-            <a href="https://lin.ee/4n78Zy0" target="_blank" class="mt-4 inline-block text-brand-700 font-medium">ขอใบเสนอราคา →</a>
+            <p class="mt-4 text-sm text-slate-600 leading-relaxed">คุ้มครองครบครัน เคลมง่าย <span class="font-semibold text-trust-600">มีรถสไลด์</span> และ<span class="font-semibold text-trust-600">ช่วยเหลือฉุกเฉิน 24 ชม.</span></p>
+            <p class="text-xs text-slate-500 mt-1">(ชั้น 1, 2+, 3+)</p>
+            <a href="https://lin.ee/4n78Zy0" target="_blank" class="mt-4 inline-flex items-center gap-2 text-brand-700 hover:text-brand-800 font-medium group-hover:gap-3 transition-all-smooth">
+              ขอใบเสนอราคา 
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
           </article>
 
-          <article class="rounded-2xl bg-white border shadow-sm p-6">
+          <article class="group rounded-2xl bg-white border border-slate-200 shadow-soft p-6 hover:shadow-xl hover:border-trust-200 hover:-translate-y-1 transition-all-smooth">
             <div class="flex items-center gap-3">
-              <div class="p-3 rounded-xl bg-brand-50 text-brand-700">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3 12l2-2 4 4L21 4l2 2-14 14L3 12z"/></svg>
+              <div class="p-3 rounded-xl bg-gradient-to-br from-trust-50 to-trust-100 text-trust-700 group-hover:from-trust-100 group-hover:to-trust-200 group-hover:shadow-trust transition-all-smooth">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"/>
+                </svg>
               </div>
-              <h3 class="font-semibold">ประกันอัคคีภัย/ที่อยู่อาศัย</h3>
+              <h3 class="font-semibold text-slate-800 group-hover:text-trust-700 transition-colors">ประกันอัคคีภัย</h3>
             </div>
-            <p class="mt-3 text-sm text-slate-600">คุ้มครองบ้าน/คอนโด จากไฟไหม้ น้ำท่วม ลมพายุ ตามความเสี่ยงของคุณ</p>
-            <a href="https://lin.ee/4n78Zy0" target="_blank" class="mt-4 inline-block text-brand-700 font-medium">สอบถามเพิ่มเติม →</a>
+            <p class="mt-4 text-sm text-slate-600 leading-relaxed">คุ้มครองบ้าน/คอนโด จาก<span class="font-semibold text-orange-600">ไฟไหม้ น้ำท่วม ลมพายุ</span> ตามความเสี่ยงของคุณ</p>
+            <p class="text-xs text-slate-500 mt-1">ที่อยู่อาศัย</p>
+            <a href="https://lin.ee/4n78Zy0" target="_blank" class="mt-4 inline-flex items-center gap-2 text-trust-700 hover:text-trust-800 font-medium group-hover:gap-3 transition-all-smooth">
+              สอบถามเพิ่มเติม
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
           </article>
 
-          <article class="rounded-2xl bg-white border shadow-sm p-6">
+          <article class="group rounded-2xl bg-white border border-slate-200 shadow-soft p-6 hover:shadow-xl hover:border-accent-200 hover:-translate-y-1 transition-all-smooth">
             <div class="flex items-center gap-3">
-              <div class="p-3 rounded-xl bg-brand-50 text-brand-700">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3 12l2-2 4 4L21 4l2 2-14 14L3 12z"/></svg>
+              <div class="p-3 rounded-xl bg-gradient-to-br from-accent-50 to-accent-100 text-accent-700 group-hover:from-accent-100 group-hover:to-accent-200 transition-all-smooth">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+                </svg>
               </div>
-              <h3 class="font-semibold">ประกันอุบัติเหตุ/สุขภาพ</h3>
+              <h3 class="font-semibold text-slate-800 group-hover:text-accent-700 transition-colors">ประกันอุบัติเหตุ</h3>
             </div>
-            <p class="mt-3 text-sm text-slate-600">ดูแผนคุ้มครองที่คุ้มค่า เบี้ยสบาย และครอบคลุมความเสี่ยงที่เจอบ่อย</p>
-            <a href="https://lin.ee/4n78Zy0" target="_blank" class="mt-4 inline-block text-brand-700 font-medium">พูดคุยผู้เชี่ยวชาญ →</a>
+            <p class="mt-4 text-sm text-slate-600 leading-relaxed">ดูแผนคุ้มครองที่คุ้มค่า <span class="font-semibold text-trust-600">เบี้ยสบาย</span> และครอบคลุมความเสี่ยงที่เจอบ่อย</p>
+            <p class="text-xs text-slate-500 mt-1">อุบัติเหตุ/สุขภาพ</p>
+            <a href="https://lin.ee/4n78Zy0" target="_blank" class="mt-4 inline-flex items-center gap-2 text-accent-700 hover:text-accent-800 font-medium group-hover:gap-3 transition-all-smooth">
+              พูดคุยผู้เชี่ยวชาญ
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
           </article>
 
-          <article class="rounded-2xl bg-white border shadow-sm p-6">
+          <article class="group rounded-2xl bg-white border border-slate-200 shadow-soft p-6 hover:shadow-xl hover:border-brand-200 hover:-translate-y-1 transition-all-smooth">
             <div class="flex items-center gap-3">
-              <div class="p-3 rounded-xl bg-brand-50 text-brand-700">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3 12l2-2 4 4L21 4l2 2-14 14L3 12z"/></svg>
+              <div class="p-3 rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-700 group-hover:from-brand-100 group-hover:to-brand-200 group-hover:shadow-glow transition-all-smooth">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z"/>
+                </svg>
               </div>
-              <h3 class="font-semibold">ประกันธุรกิจ/ทรัพย์สิน</h3>
+              <h3 class="font-semibold text-slate-800 group-hover:text-brand-700 transition-colors">ประกันธุรกิจ</h3>
             </div>
-            <p class="mt-3 text-sm text-slate-600">ร้านค้า/คลังสินค้า/ความรับผิดต่อบุคคลภายนอก (PL) และทรัพย์สิน</p>
-            <a href="https://lin.ee/4n78Zy0" target="_blank" class="mt-4 inline-block text-brand-700 font-medium">รับคำปรึกษา →</a>
+            <p class="mt-4 text-sm text-slate-600 leading-relaxed">ร้านค้า/คลังสินค้า/<span class="font-semibold text-trust-600">ความรับผิดต่อบุคคลภายนอก (PL)</span> และทรัพย์สิน</p>
+            <p class="text-xs text-slate-500 mt-1">ธุรกิจ/ทรัพย์สิน</p>
+            <a href="https://lin.ee/4n78Zy0" target="_blank" class="mt-4 inline-flex items-center gap-2 text-brand-700 hover:text-brand-800 font-medium group-hover:gap-3 transition-all-smooth">
+              รับคำปรึกษา
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
           </article>
 
-          <article class="rounded-2xl bg-white border shadow-sm p-6">
+          <article class="group rounded-2xl bg-white border border-slate-200 shadow-soft p-6 hover:shadow-xl hover:border-trust-200 hover:-translate-y-1 transition-all-smooth">
             <div class="flex items-center gap-3">
-              <div class="p-3 rounded-xl bg-brand-50 text-brand-700">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3 12l2-2 4 4L21 4l2 2-14 14L3 12z"/></svg>
+              <div class="p-3 rounded-xl bg-gradient-to-br from-trust-50 to-trust-100 text-trust-700 group-hover:from-trust-100 group-hover:to-trust-200 group-hover:shadow-trust transition-all-smooth">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.5,12C18,12 20,14 20,16.5C20,17.38 19.75,18.21 19.31,18.9L22.39,22L21,23.39L17.88,20.32C17.19,20.75 16.37,21 15.5,21C13,21 11,19 11,16.5C11,14 13,12 15.5,12M15.5,14A2.5,2.5 0 0,0 13,16.5A2.5,2.5 0 0,0 15.5,19A2.5,2.5 0 0,0 18,16.5A2.5,2.5 0 0,0 15.5,14M2.5,4A2,2 0 0,1 4.5,2H14.5A2,2 0 0,1 16.5,4V10.5C16.05,10.2 15.55,10 15,9.84V4H4.5V16H9.25C9.32,16.75 9.5,17.45 9.84,18.1C9.65,18.37 9.39,18.75 9.05,19.1C8.75,19.4 8.36,19.78 7.85,20.29C7.45,20.7 6.89,20.96 6.25,21H6C5.6,21 5.25,20.9 5,20.64C4.75,20.4 4.66,20 4.66,19.6V19.15C4.66,18.45 4.96,17.77 5.46,17.27L6.05,16.68C6.35,16.39 6.50,16 6.50,15.58V7.5C6.5,7.22 6.28,7 6,7C5.72,7 5.5,7.22 5.5,7.5V15.58C5.5,16.13 5.31,16.64 4.95,17L4.36,17.59C3.56,18.38 3.07,19.5 3.07,20.65V21.1C3.07,21.96 3.37,22.78 3.92,23.33C4.47,23.88 5.29,24.18 6.15,24.18H6.4C7.64,24.18 8.82,23.65 9.67,22.8C10.12,22.35 10.5,21.9 10.8,21.6C11.1,21.3 11.47,20.92 11.77,20.62C12.07,20.32 12.18,19.83 12.18,19.33V4A2,2 0 0,1 14.18,2H2.5A2,2 0 0,1 .5,4V16A2,2 0 0,1 2.5,18V4Z"/>
+                </svg>
               </div>
-              <h3 class="font-semibold">ประกันการเดินทาง (ใน/ต่างประเทศ)</h3>
+              <h3 class="font-semibold text-slate-800 group-hover:text-trust-700 transition-colors">ประกันการเดินทาง</h3>
             </div>
-            <p class="mt-3 text-sm text-slate-600">เดินทางอุ่นใจทุกเส้นทาง <strong>เครื่องบินหรือกระเป๋าดีเลย์</strong> มีเงินชดเชยตามเงื่อนไข</p>
-            <a href="https://lin.ee/4n78Zy0" target="_blank" class="mt-4 inline-block text-brand-700 font-medium">สอบถามแผนเดินทาง →</a>
+            <p class="mt-4 text-sm text-slate-600 leading-relaxed">เดินทางอุ่นใจทุกเส้นทาง <span class="font-semibold text-trust-600">เครื่องบินหรือกระเป๋าดีเลย์</span> มีเงินชดเชยตามเงื่อนไข</p>
+            <p class="text-xs text-slate-500 mt-1">(ใน/ต่างประเทศ)</p>
+            <a href="https://lin.ee/4n78Zy0" target="_blank" class="mt-4 inline-flex items-center gap-2 text-trust-700 hover:text-trust-800 font-medium group-hover:gap-3 transition-all-smooth">
+              สอบถามแผนเดินทาง
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
           </article>
         </div>
       </div>
     </section>
 
     <!-- ทำไมต้องเลือกเรา -->
-    <section id="why" class="py-16 md:py-24">
+    <section id="why" class="py-16 md:py-24 bg-gradient-to-br from-slate-50 to-white">
       <div class="mx-auto max-w-6xl px-4">
-        <h2 class="text-2xl md:text-3xl font-bold">ทำไมต้องเลือกเรา</h2>
-        <div class="mt-8 grid md:grid-cols-3 gap-6">
-          <div class="rounded-2xl border p-6"><p class="font-semibold">เชี่ยวชาญด้านวินาศภัย</p><p class="mt-2 text-sm text-slate-600">เข้าใจผลิตภัณฑ์และกระบวนการสินไหมเชิงลึก</p></div>
-          <div class="rounded-2xl border p-6"><p class="font-semibold">นายหน้ามืออาชีพ</p><p class="mt-2 text-sm text-slate-600">แนะนำอย่างเป็นกลาง ยืนข้างประโยชน์ของลูกค้า</p></div>
-          <div class="rounded-2xl border p-6"><p class="font-semibold">อัปเดตความรู้เสมอ</p><p class="mt-2 text-sm text-slate-600">ข้อมูลและแนวปฏิบัติล่าสุด เพื่อคำแนะนำที่แม่นยำ</p></div>
-          <div class="rounded-2xl border p-6"><p class="font-semibold">ทีมอาจารย์แดง</p><p class="mt-2 text-sm text-slate-600">ที่ปรึกษามืออาชีพ ยกระดับมาตรฐานงานบริการ</p></div>
-          <div class="rounded-2xl border p-6"><p class="font-semibold">ดูแลตลอดสัญญา</p><p class="mt-2 text-sm text-slate-600">ต่ออายุ แจ้งเตือน ประสานสินไหมอย่างใกล้ชิด</p></div>
-          <div class="rounded-2xl border p-6"><p class="font-semibold">โปร่งใส ตรวจสอบได้</p><p class="mt-2 text-sm text-slate-600">อธิบายเงื่อนไขตรงไปตรงมา ไม่มีบังคับขาย</p></div>
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-brand-700 to-trust-600 bg-clip-text text-transparent">ทำไมต้องเลือกเรา</h2>
+          <p class="mt-3 text-slate-600 max-w-2xl mx-auto">ความเชี่ยวชาญและความใส่ใจที่ทำให้เราต่างจากนายหน้าทั่วไป</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="group rounded-2xl border border-slate-200 bg-white shadow-soft p-6 hover:shadow-xl hover:border-brand-200 hover:-translate-y-1 transition-all-smooth">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="p-2 rounded-lg bg-gradient-to-br from-brand-50 to-brand-100 text-brand-700">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M7,11C7,14.53 9.61,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7M19,11H17A5,5 0 0,1 12,16A5,5 0 0,1 7,11H5C5,14.53 7.61,17.44 11,17.93V21H13V17.93C16.39,17.44 19,14.53 19,11Z"/>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-slate-800 group-hover:text-brand-700 transition-colors">เชี่ยวชาญด้านวินาศภัย</h3>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed">เข้าใจผลิตภัณฑ์และกระบวนการสินไหมเชิงลึก</p>
+          </div>
+          
+          <div class="group rounded-2xl border border-slate-200 bg-white shadow-soft p-6 hover:shadow-xl hover:border-trust-200 hover:-translate-y-1 transition-all-smooth">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="p-2 rounded-lg bg-gradient-to-br from-trust-50 to-trust-100 text-trust-700">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-slate-800 group-hover:text-trust-700 transition-colors">นายหน้ามืออาชีพ</h3>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed">แนะนำอย่างเป็นกลาง ยืนข้างประโยชน์ของลูกค้า</p>
+          </div>
+          
+          <div class="group rounded-2xl border border-slate-200 bg-white shadow-soft p-6 hover:shadow-xl hover:border-accent-200 hover:-translate-y-1 transition-all-smooth">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="p-2 rounded-lg bg-gradient-to-br from-accent-50 to-accent-100 text-accent-700">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"/>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-slate-800 group-hover:text-accent-700 transition-colors">อัปเดตความรู้เสมอ</h3>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed">ข้อมูลและแนวปฏิบัติล่าสุด เพื่อคำแนะนำที่แม่นยำ</p>
+          </div>
+          
+          <div class="group rounded-2xl border border-slate-200 bg-white shadow-soft p-6 hover:shadow-xl hover:border-brand-200 hover:-translate-y-1 transition-all-smooth">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="p-2 rounded-lg bg-gradient-to-br from-red-50 to-red-100 text-red-600">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,2L13.09,8.26L22,9L14,12L22,15L13.09,15.74L12,22L10.91,15.74L2,15L10,12L2,9L10.91,8.26L12,2Z"/>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-slate-800 group-hover:text-red-600 transition-colors">ทีมอาจารย์แดง</h3>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed">ที่ปรึกษามืออาชีพ ยกระดับมาตรฐานงานบริการ</p>
+          </div>
+          
+          <div class="group rounded-2xl border border-slate-200 bg-white shadow-soft p-6 hover:shadow-xl hover:border-trust-200 hover:-translate-y-1 transition-all-smooth">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="p-2 rounded-lg bg-gradient-to-br from-trust-50 to-trust-100 text-trust-700">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M16.5,12C19,12 21,14 21,16.5C21,17.38 20.75,18.21 20.31,18.9L22.39,22L21,23.39L17.88,20.32C17.19,20.75 16.37,21 15.5,21C13,21 11,19 11,16.5C11,14 13,12 15.5,12M15.5,14A2.5,2.5 0 0,0 13,16.5A2.5,2.5 0 0,0 15.5,19A2.5,2.5 0 0,0 18,16.5A2.5,2.5 0 0,0 15.5,14M7,2V13H10V22L17,10H13L17,2H7Z"/>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-slate-800 group-hover:text-trust-700 transition-colors">ดูแลตลอดสัญญา</h3>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed">ต่ออายุ แจ้งเตือน ประสานสินไหมอย่างใกล้ชิด</p>
+          </div>
+          
+          <div class="group rounded-2xl border border-slate-200 bg-white shadow-soft p-6 hover:shadow-xl hover:border-accent-200 hover:-translate-y-1 transition-all-smooth">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="p-2 rounded-lg bg-gradient-to-br from-accent-50 to-accent-100 text-accent-700">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z"/>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-slate-800 group-hover:text-accent-700 transition-colors">โปร่งใส ตรวจสอบได้</h3>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed">อธิบายเงื่อนไขตรงไปตรงมา ไม่มีบังคับขาย</p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- รีวิว: ฝังโพสต์ Facebook (responsive iframe, ขนาดเล็กลง) -->
-    <section id="reviews" class="py-16 md:py-24 bg-slate-50">
+    <section id="reviews" class="py-16 md:py-24 bg-gradient-to-br from-slate-50 to-white">
       <div class="mx-auto max-w-6xl px-4">
-        <h2 class="text-2xl md:text-3xl font-bold">รีวิวจากลูกค้า</h2>
+        <div class="text-center mb-10">
+          <h2 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-brand-700 to-trust-600 bg-clip-text text-transparent">รีวิวจากลูกค้า</h2>
+          <p class="mt-3 text-slate-600">ความไว้วางใจจากลูกค้าคือสิ่งที่เราภาคภูมิใจมากที่สุด</p>
+        </div>
 
-        <div class="relative mt-6">
+        <div class="relative mt-8">
           <button id="rvPrev" aria-label="ก่อนหน้า"
-            class="hidden md:inline-flex absolute -left-3 top-1/2 -translate-y-1/2 z-10 rounded-full border bg-white/90 px-3 py-2 shadow hover:bg-white">←</button>
+            class="hidden md:inline-flex absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-white/50 bg-white/90 backdrop-blur-sm items-center justify-center shadow-soft hover:shadow-xl hover:bg-white transition-all-smooth hover:-translate-y-1">
+            <svg class="w-5 h-5 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
           <button id="rvNext" aria-label="ถัดไป"
-            class="hidden md:inline-flex absolute -right-3 top-1/2 -translate-y-1/2 z-10 rounded-full border bg-white/90 px-3 py-2 shadow hover:bg-white">→</button>
+            class="hidden md:inline-flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-white/50 bg-white/90 backdrop-blur-sm items-center justify-center shadow-soft hover:shadow-xl hover:bg-white transition-all-smooth hover:-translate-y-1">
+            <svg class="w-5 h-5 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
 
           <div id="reviewsStrip"
                class="no-scrollbar overflow-x-auto snap-x snap-mandatory flex gap-4 pb-2 scroll-smooth"></div>
@@ -485,52 +793,121 @@
     </section>
 
     <!-- ติดต่อเรา -->
-    <section id="contact" class="py-16 md:py-24 bg-slate-50">
+    <section id="contact" class="py-16 md:py-24 bg-gradient-to-br from-slate-50 to-white">
       <div class="mx-auto max-w-6xl px-4">
-        <h2 class="text-2xl md:text-3xl font-bold">ติดต่อเรา</h2>
-        <p class="mt-2 text-slate-600">
-          โทร <a class="text-brand-700 font-medium" href="tel:+66874262649">087-426-2649</a> •
-          LINE: <a class="text-brand-700 font-medium" href="https://lin.ee/4n78Zy0" target="_blank" rel="noopener">@aimaim.</a> •
-          Facebook Page: <a class="text-brand-700 font-medium" href="https://m.facebook.com/profile.php?id=100085180820460" target="_blank" rel="noopener">คลิกที่นี่</a>
-        </p>
-
-        <!-- ปุ่มคุยด่วน -->
-        <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 md:max-w-xl">
-          <a href="https://m.me/107855268730758" target="_blank" rel="noopener"
-            class="rounded-xl px-4 py-3 border text-center font-medium hover:bg-slate-50">คุยผ่าน Facebook Messenger</a>
-          <a href="https://lin.ee/4n78Zy0" target="_blank" rel="noopener"
-            class="rounded-xl px-4 py-3 border text-center font-medium hover:bg-slate-50">คุยผ่าน LINE OA</a>
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-brand-700 to-trust-600 bg-clip-text text-transparent">ติดต่อเรา</h2>
+          <p class="mt-3 text-slate-600 max-w-2xl mx-auto">
+            พร้อมให้คำปรึกษาและใบเสนอราคาฟรี ติดต่อได้หลายช่องทาง
+          </p>
         </div>
 
-        <div class="mt-8 grid md:grid-cols-2 gap-10">
-          <!-- ฟอร์ม -->
-          <div>
-            <div class="rounded-2xl bg-white border shadow-sm p-6">
-              <h3 class="font-semibold">ขอใบเสนอราคา / ปรึกษาฟรี</h3>
+        <!-- Quick Contact Info -->
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+          <div class="bg-white rounded-2xl p-6 shadow-soft hover:shadow-xl transition-all-smooth text-center group">
+            <div class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-brand-50 to-brand-100 rounded-xl text-brand-700 mb-4 group-hover:from-brand-100 group-hover:to-brand-200 transition-all">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-slate-800 mb-2">โทรศัพท์</h3>
+            <a href="tel:+66874262649" class="text-brand-700 font-medium hover:text-brand-800 transition-colors">087-426-2649</a>
+          </div>
+          
+          <div class="bg-white rounded-2xl p-6 shadow-soft hover:shadow-xl transition-all-smooth text-center group">
+            <div class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-trust-50 to-trust-100 rounded-xl text-trust-700 mb-4 group-hover:from-trust-100 group-hover:to-trust-200 transition-all">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771z"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-slate-800 mb-2">LINE Official</h3>
+            <a href="https://lin.ee/4n78Zy0" target="_blank" rel="noopener" class="text-trust-700 font-medium hover:text-trust-800 transition-colors">@aimaim.</a>
+          </div>
+          
+          <div class="bg-white rounded-2xl p-6 shadow-soft hover:shadow-xl transition-all-smooth text-center group">
+            <div class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-accent-50 to-accent-100 rounded-xl text-accent-700 mb-4 group-hover:from-accent-100 group-hover:to-accent-200 transition-all">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 15.64 4.29 18.85 7.88 20.1V22L9.79 21.07C10.5 21.22 11.23 21.31 12 21.31C17.5 21.31 22 16.82 22 11.28C22 5.81 17.5 1.32 12 1.32V2.04M8.5 9.64C9.03 9.64 9.5 10.11 9.5 10.64S9.03 11.64 8.5 11.64 7.5 11.17 7.5 10.64 7.97 9.64 8.5 9.64M12 9.64C12.53 9.64 13 10.11 13 10.64S12.53 11.64 12 11.64 11 11.17 11 10.64 11.47 9.64 12 9.64M15.5 9.64C16.03 9.64 16.5 10.11 16.5 10.64S16.03 11.64 15.5 11.64 14.5 11.17 14.5 10.64 14.97 9.64 15.5 9.64Z"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-slate-800 mb-2">Facebook</h3>
+            <a href="https://m.facebook.com/profile.php?id=100085180820460" target="_blank" rel="noopener" class="text-accent-700 font-medium hover:text-accent-800 transition-colors">ครูพี่อิม</a>
+          </div>
+        </div>
 
-              <form id="contactForm" action="https://formspree.io/f/xyzdblaq" method="POST" class="mt-6 grid gap-4">
+        <!-- Quick Action Buttons -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-12">
+          <a href="https://m.me/107855268730758" target="_blank" rel="noopener"
+            class="group flex items-center justify-center gap-3 rounded-xl px-6 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold shadow-xl hover:shadow-2xl hover:from-blue-700 hover:to-blue-800 transition-all-smooth hover-lift">
+            <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 8.16c-.169 1.858-1.269 6.476-1.757 8.515-.206.865-.613 1.156-1.006 1.186-.853.078-1.501-.563-2.328-1.104-1.295-.848-2.024-1.375-3.28-2.2-1.448-.956-.51-1.483.316-2.342.216-.226 3.988-3.655 4.061-3.968.009-.039.018-.184-.069-.26-.087-.075-.215-.049-.307-.029-.131.029-2.218 1.409-6.26 4.144-.592.408-1.125.606-1.601.595-.527-.012-1.54-.298-2.296-.542-.926-.298-1.662-.456-1.598-.961.033-.263.392-.532 1.077-.808 4.216-1.839 7.027-3.051 8.435-3.635 4.021-1.667 4.856-1.955 5.4-1.955.12 0 .389.028.563.167.147.118.188.277.207.389.016.096.037.314.02.485z"/>
+            </svg>
+            คุยผ่าน Messenger
+          </a>
+          <a href="https://lin.ee/4n78Zy0" target="_blank" rel="noopener"
+            class="group flex items-center justify-center gap-3 rounded-xl px-6 py-4 bg-gradient-to-r from-trust-600 to-trust-700 text-white font-semibold shadow-xl hover:shadow-2xl hover:from-trust-700 hover:to-trust-800 transition-all-smooth hover-lift">
+            <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771z"/>
+            </svg>
+            คุยผ่าน LINE OA
+          </a>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- Enhanced Contact Form -->
+          <div>
+            <div class="rounded-3xl bg-white border border-slate-200 shadow-soft p-8 hover:shadow-xl transition-all-smooth">
+              <div class="flex items-center gap-3 mb-6">
+                <div class="p-2 rounded-lg bg-gradient-to-br from-brand-50 to-brand-100 text-brand-700">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z"/>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-slate-800">ขอใบเสนอราคา / ปรึกษาฟรี</h3>
+              </div>
+
+              <form id="contactForm" action="https://formspree.io/f/xyzdblaq" method="POST" class="grid gap-6">
                 <!-- anti-bot (honeypot) -->
                 <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
                 <!-- subject -->
                 <input type="hidden" name="_subject" value="ข้อความจากเว็บไซต์: ขอใบเสนอราคา/ปรึกษา" />
 
-                <div>
-                  <label class="text-sm" for="name">ชื่อ-นามสกุล</label>
-                  <input id="name" name="name" type="text" required class="mt-1 w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-400" placeholder="เช่น สุพัตรา ใจดี">
+                <div class="group">
+                  <label class="block text-sm font-medium text-slate-700 mb-2" for="name">
+                    ชื่อ-นามสกุล <span class="text-red-500">*</span>
+                  </label>
+                  <input id="name" name="name" type="text" required 
+                    class="w-full rounded-xl border border-slate-200 px-4 py-3 transition-all-smooth focus:outline-none focus:ring-2 focus:ring-brand-400 focus:border-transparent group-hover:border-slate-300" 
+                    placeholder="เช่น สุพัตรา ใจดี">
+                  <div class="mt-1 text-xs text-red-500 hidden error-message" id="name-error">กรุณากรอกชื่อ-นามสกุล</div>
                 </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label class="text-sm" for="phone">เบอร์โทร</label>
-                    <input id="phone" name="phone" type="tel" required class="mt-1 w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-400" placeholder="087-426-2649">
+                  <div class="group">
+                    <label class="block text-sm font-medium text-slate-700 mb-2" for="phone">
+                      เบอร์โทร <span class="text-red-500">*</span>
+                    </label>
+                    <input id="phone" name="phone" type="tel" required 
+                      class="w-full rounded-xl border border-slate-200 px-4 py-3 transition-all-smooth focus:outline-none focus:ring-2 focus:ring-brand-400 focus:border-transparent group-hover:border-slate-300" 
+                      placeholder="087-426-2649">
+                    <div class="mt-1 text-xs text-red-500 hidden error-message" id="phone-error">กรุณากรอกเบอร์โทรศัพท์</div>
                   </div>
-                  <div>
-                    <label class="text-sm" for="line">LINE ID (ถ้ามี)</label>
-                    <input id="line" name="line" type="text" class="mt-1 w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-400" placeholder="@aimaim.">
+                  <div class="group">
+                    <label class="block text-sm font-medium text-slate-700 mb-2" for="line">
+                      LINE ID <span class="text-slate-400">(ถ้ามี)</span>
+                    </label>
+                    <input id="line" name="line" type="text" 
+                      class="w-full rounded-xl border border-slate-200 px-4 py-3 transition-all-smooth focus:outline-none focus:ring-2 focus:ring-trust-400 focus:border-transparent group-hover:border-slate-300" 
+                      placeholder="@aimaim.">
                   </div>
                 </div>
-                <div>
-                  <label class="text-sm" for="service">ต้องการข้อมูลเกี่ยวกับ</label>
-                  <select id="service" name="service" class="mt-1 w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-400">
+
+                <div class="group">
+                  <label class="block text-sm font-medium text-slate-700 mb-2" for="service">
+                    ต้องการข้อมูลเกี่ยวกับ
+                  </label>
+                  <select id="service" name="service" 
+                    class="w-full rounded-xl border border-slate-200 px-4 py-3 transition-all-smooth focus:outline-none focus:ring-2 focus:ring-brand-400 focus:border-transparent group-hover:border-slate-300">
                     <option>ประกันรถยนต์ ชั้น 1</option>
                     <option>ประกันรถยนต์ 2+</option>
                     <option>ประกันรถยนต์ 3+</option>
@@ -541,18 +918,80 @@
                     <option>อื่น ๆ</option>
                   </select>
                 </div>
-                <div>
-                  <label class="text-sm" for="message">รายละเอียดเพิ่มเติม</label>
-                  <textarea id="message" name="message" rows="4" class="mt-1 w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-400" placeholder="บอกข้อมูลคร่าว ๆ เพื่อประเมินเบี้ย เช่น รุ่นรถ/ทุน/งบประมาณ/ความต้องการ"></textarea>
+
+                <div class="group">
+                  <label class="block text-sm font-medium text-slate-700 mb-2" for="message">
+                    รายละเอียดเพิ่มเติม
+                  </label>
+                  <textarea id="message" name="message" rows="4" 
+                    class="w-full rounded-xl border border-slate-200 px-4 py-3 transition-all-smooth focus:outline-none focus:ring-2 focus:ring-brand-400 focus:border-transparent group-hover:border-slate-300 resize-none" 
+                    placeholder="บอกข้อมูลคร่าว ๆ เพื่อประเมินเบี้ย เช่น รุ่นรถ/ทุน/งบประมาณ/ความต้องการ"></textarea>
                 </div>
-                <button type="submit" class="rounded-xl bg-brand-600 text-white font-semibold px-5 py-3 hover:bg-brand-700 transition shadow">ส่งคำขอ</button>
-                <p id="formStatus" class="text-sm mt-2 hidden"></p>
+
+                <button type="submit" 
+                  class="group w-full rounded-xl bg-gradient-to-r from-brand-600 to-brand-700 text-white font-semibold px-6 py-4 shadow-glow hover:shadow-xl hover:from-brand-700 hover:to-brand-800 transition-all-smooth hover-lift disabled:opacity-50 disabled:cursor-not-allowed">
+                  <span class="flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                    </svg>
+                    ส่งคำขอ
+                  </span>
+                </button>
+                
+                <div id="formStatus" class="text-sm mt-2 hidden p-3 rounded-lg"></div>
               </form>
             </div>
           </div>
 
-          <!-- คอลัมน์ขวาเว้นไว้เพื่อบาล้านซ์บนจอใหญ่ -->
-          <div class="hidden md:block"></div>
+          <!-- Trust Elements -->
+          <div class="space-y-8">
+            <div class="bg-gradient-to-br from-white to-slate-50 rounded-3xl border border-slate-200 shadow-soft p-8">
+              <h3 class="text-xl font-semibold text-slate-800 mb-6">ทำไมต้องเลือกเรา</h3>
+              <div class="space-y-4">
+                <div class="flex items-start gap-3">
+                  <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-trust-50 to-trust-100 rounded-lg flex items-center justify-center">
+                    <svg class="w-4 h-4 text-trust-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-slate-800">ประสบการณ์ 10+ ปี</h4>
+                    <p class="text-sm text-slate-600 mt-1">เชี่ยวชาญทุกด้านประกันวินาศภัย</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-brand-50 to-brand-100 rounded-lg flex items-center justify-center">
+                    <svg class="w-4 h-4 text-brand-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-slate-800">ใบอนุญาต คปภ.</h4>
+                    <p class="text-sm text-slate-600 mt-1">เลขที่ 6104039111</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-accent-50 to-accent-100 rounded-lg flex items-center justify-center">
+                    <svg class="w-4 h-4 text-accent-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-slate-800">บริการ 24/7</h4>
+                    <p class="text-sm text-slate-600 mt-1">พร้อมให้คำปรึกษาตลอดเวลา</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Response Time -->
+            <div class="bg-gradient-to-br from-trust-50 to-trust-100/50 rounded-2xl p-6 border border-trust-200/50">
+              <div class="text-center">
+                <div class="text-2xl font-bold text-trust-700 mb-1">< 30 นาที</div>
+                <div class="text-sm text-trust-600">เวลาตอบกลับเฉลี่ย</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -590,11 +1029,65 @@
       const statusEl = document.getElementById('formStatus');
       if(!form) return;
 
+      // Enhanced form validation
+      function validateForm() {
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        let isValid = true;
+
+        // Clear previous errors
+        document.querySelectorAll('.error-message').forEach(el => el.classList.add('hidden'));
+        document.querySelectorAll('input[required], select[required]').forEach(input => {
+          input.classList.remove('border-red-300', 'ring-red-500');
+        });
+
+        // Name validation
+        if (!name) {
+          document.getElementById('name-error').classList.remove('hidden');
+          document.getElementById('name').classList.add('border-red-300', 'ring-red-500');
+          isValid = false;
+        }
+
+        // Phone validation (basic Thai phone number pattern)
+        const phonePattern = /^[0-9\-\s\+\(\)]{8,15}$/;
+        if (!phone) {
+          document.getElementById('phone-error').classList.remove('hidden');
+          document.getElementById('phone').classList.add('border-red-300', 'ring-red-500');
+          isValid = false;
+        } else if (!phonePattern.test(phone)) {
+          document.getElementById('phone-error').textContent = 'รูปแบบเบอร์โทรไม่ถูกต้อง';
+          document.getElementById('phone-error').classList.remove('hidden');
+          document.getElementById('phone').classList.add('border-red-300', 'ring-red-500');
+          isValid = false;
+        }
+
+        return isValid;
+      }
+
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
+        
+        if (!validateForm()) {
+          return;
+        }
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        
         statusEl.classList.remove('hidden');
         statusEl.textContent = 'กำลังส่ง...';
-        statusEl.className = 'text-sm mt-2 text-slate-600';
+        statusEl.className = 'text-sm mt-2 p-3 rounded-lg bg-blue-50 text-blue-700';
+        
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `
+          <span class="flex items-center justify-center gap-2">
+            <svg class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25"></circle>
+              <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" class="opacity-75"></path>
+            </svg>
+            กำลังส่ง...
+          </span>
+        `;
 
         try {
           const resp = await fetch(form.action, {
@@ -605,17 +1098,95 @@
 
           if (resp.ok) {
             form.reset();
-            statusEl.textContent = 'ส่งคำขอเรียบร้อย ขอบคุณค่ะ เราจะติดต่อกลับโดยเร็วที่สุด';
-            statusEl.className = 'text-sm mt-2 text-emerald-700';
+            statusEl.textContent = '✅ ส่งคำขอเรียบร้อย ขอบคุณค่ะ เราจะติดต่อกลับภายใน 30 นาที';
+            statusEl.className = 'text-sm mt-2 p-3 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200';
           } else {
-            statusEl.textContent = 'ส่งไม่สำเร็จ กรุณาลองใหม่ หรือใช้ LINE/โทรศัพท์ด้านบน';
-            statusEl.className = 'text-sm mt-2 text-rose-700';
+            statusEl.textContent = '❌ ส่งไม่สำเร็จ กรุณาลองใหม่ หรือใช้ LINE/โทรศัพท์ด้านบน';
+            statusEl.className = 'text-sm mt-2 p-3 rounded-lg bg-rose-50 text-rose-700 border border-rose-200';
           }
         } catch (err) {
-          statusEl.textContent = 'เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่ภายหลัง';
-          statusEl.className = 'text-sm mt-2 text-rose-700';
+          statusEl.textContent = '⚠️ เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่ภายหลัง';
+          statusEl.className = 'text-sm mt-2 p-3 rounded-lg bg-rose-50 text-rose-700 border border-rose-200';
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
         }
       });
+    })();
+
+    // Enhanced navigation active states
+    (function() {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+      const mobileLinks = document.querySelectorAll('#mobileMenu a[href^="#"]');
+      
+      function updateActiveNav() {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.getBoundingClientRect().top;
+          if (sectionTop <= 100) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+
+        mobileLinks.forEach(link => {
+          link.classList.remove('text-brand-700', 'bg-brand-50');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('text-brand-700', 'bg-brand-50');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updateActiveNav);
+      window.addEventListener('load', updateActiveNav);
+    })();
+
+    // Smooth mobile menu animation
+    (function() {
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          const isHidden = mobileMenu.classList.contains('hidden');
+          
+          if (isHidden) {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.style.maxHeight = '0px';
+            mobileMenu.style.opacity = '0';
+            
+            requestAnimationFrame(() => {
+              mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+              mobileMenu.style.opacity = '1';
+            });
+          } else {
+            mobileMenu.style.maxHeight = '0px';
+            mobileMenu.style.opacity = '0';
+            
+            setTimeout(() => {
+              mobileMenu.classList.add('hidden');
+            }, 300);
+          }
+        });
+
+        // Close mobile menu when clicking on links
+        mobileMenu.addEventListener('click', (e) => {
+          if (e.target.tagName === 'A') {
+            mobileMenu.style.maxHeight = '0px';
+            mobileMenu.style.opacity = '0';
+            setTimeout(() => {
+              mobileMenu.classList.add('hidden');
+            }, 300);
+          }
+        });
+      }
     })();
   </script>
 
